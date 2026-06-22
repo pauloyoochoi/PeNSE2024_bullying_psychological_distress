@@ -29,7 +29,7 @@ The base model confirmed a significant positive relationship between bullying an
 ## Moderation Results
 
 ### 1. School Psychological Support
-- **Invariance:** Metric ✅ | Scalar ⚠️ (borderline)
+- **Invariance:** Metric | Scalar (borderline)
 - **Moderation:** Δχ²(1) = 22.867, p < .001
 - **Coefficients:**
   - With support: β = 0.520
@@ -39,7 +39,7 @@ The base model confirmed a significant positive relationship between bullying an
 ---
 
 ### 2. Parental Understanding
-- **Invariance:** Metric ✅ | Scalar ⚠️ (borderline) | Variances ❌
+- **Invariance:** Metric | Scalar (borderline) | Variances not established
 - **Moderation:** Δχ²(2) = 3,077.9, p < .001
 - **Coefficients:**
   - Never understands: β = 0.804
@@ -50,7 +50,7 @@ The base model confirmed a significant positive relationship between bullying an
 ---
 
 ### 3. Peer Kindness
-- **Invariance:** Metric ✅ | Scalar ⚠️ (borderline) | Variances ❌
+- **Invariance:** Metric | Scalar (borderline) | Variances not established
 - **Moderation:** Δχ²(2) = 2,551.9, p < .001
 - **Coefficients:**
   - Never: β = 0.870
@@ -61,7 +61,7 @@ The base model confirmed a significant positive relationship between bullying an
 ---
 
 ### 4. Number of Close Friends
-- **Invariance:** Metric ✅ | Scalar ⚠️ (borderline) | Variances ❌
+- **Invariance:** Metric | Scalar (borderline) | Variances not established
 - **Moderation:** Δχ²(1) = 689.5, p < .001
 - **Coefficients:**
   - No friends: β = 0.822
@@ -73,10 +73,10 @@ The base model confirmed a significant positive relationship between bullying an
 ## Results Summary
 | Moderator | Δχ² | df | p | β protected | β unprotected | Δβ | Protection |
 |-----------|-----|----|----|------------|---------------|-----|------------|
-| School support | 22.9 | 1 | <.001 | 0.520 | 0.551 | 0.031 | ❌ Negligible |
-| Parental understanding | 3,077.9 | 2 | <.001 | 0.443 | 0.804 | 0.361 | ✅ Strong |
-| Peer kindness | 2,551.9 | 2 | <.001 | 0.478 | 0.870 | 0.392 | ✅ Strong |
-| N close friends | 689.5 | 1 | <.001 | 0.520 | 0.822 | 0.302 | ✅ Strong |
+| School support | 22.9 | 1 | <.001 | 0.520 | 0.551 | 0.031 | Negligible |
+| Parental understanding | 3,077.9 | 2 | <.001 | 0.443 | 0.804 | 0.361 | Strong |
+| Peer kindness | 2,551.9 | 2 | <.001 | 0.478 | 0.870 | 0.392 | Strong |
+| N close friends | 689.5 | 1 | <.001 | 0.520 | 0.822 | 0.302 | Strong |
 
 ## Conclusion
 Three of four moderators demonstrated meaningful protective effects against the bullying–psychological distress relationship. Peer kindness showed the largest differential (Δβ = 0.392), followed by parental understanding (Δβ = 0.361) and number of close friends (Δβ = 0.302). School psychological support, while statistically significant, showed negligible practical effect (Δβ = 0.031), possibly reflecting limitations in the reach or quality of support services available in Brazilian schools.
