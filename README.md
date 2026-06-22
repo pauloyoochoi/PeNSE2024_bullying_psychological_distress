@@ -21,7 +21,7 @@ This project investigates the relationship between **bullying victimization** an
 - **Moderation approach:** Multigroup SEM with measurement invariance testing
 
 ## Data Source
-PeNSE 2024 — Pesquisa Nacional de Saúde do Escolar Instituto Brasileiro de Geografia e Estatística (IBGE) https://www.ibge.gov.br/pense
+PeNSE 2024 — Pesquisa Nacional de Saúde do Escolar Instituto Brasileiro de Geografia e Estatística (IBGE) https://www.ibge.gov.br/estatisticas/sociais/populacao/9134-pesquisa-nacional-de-saude-do-escolar.html
 
 ## Base SEM Model
 The base model confirmed a significant positive relationship between bullying and psychological distress (β = 0.525, p < .001), with good global fit (CFI = 0.952; RMSEA = 0.080; SRMR = 0.041). Bullying explained 27.6% of the variance in psychological distress.
@@ -45,7 +45,7 @@ The base model confirmed a significant positive relationship between bullying an
   - Never understands: β = 0.804
   - Rarely/Sometimes: β = 0.443
   - Most times/Always: β = 0.521
-**Interpretation:** Adolescents whose parents never understand their concerns show the strongest bullying–distress effect (β = 0.804), suggesting that the absence of parental support significantly amplifies the impact of bullying. Even partial parental support already demonstrates a relevant protective effect (β = 0.443).
+- **Interpretation:** Adolescents whose parents never understand their concerns show the strongest bullying–distress effect (β = 0.804), suggesting that the absence of parental support significantly amplifies the impact of bullying. Even partial parental support already demonstrates a relevant protective effect (β = 0.443).
 
 ---
 
@@ -66,7 +66,7 @@ The base model confirmed a significant positive relationship between bullying an
 - **Coefficients:**
   - No friends: β = 0.822
   - Has friends (1+): β = 0.520
-**Interpretation:** Having at least one close friend substantially reduces the impact of bullying on psychological distress (Δβ = 0.302). Adolescents without close friends are considerably more vulnerable to the harmful effects of bullying, reinforcing the role of social support as a protective factor for mental health.
+- **Interpretation:** Having at least one close friend substantially reduces the impact of bullying on psychological distress (Δβ = 0.302). Adolescents without close friends are considerably more vulnerable to the harmful effects of bullying, reinforcing the role of social support as a protective factor for mental health.
 
 ---
 
