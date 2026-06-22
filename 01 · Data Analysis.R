@@ -81,6 +81,7 @@ table(df$parent_understanding)
 lavInspect(fit_conf, "group.label")
 
 # Moderator 3: Peer kindness
+
 fit_conf <- sem(sem_model, data = df, ordered = TRUE, estimator = "WLSMV",
                 group = "peer_kindness")
 
@@ -110,6 +111,7 @@ table(df$peer_kindness)
 lavInspect(fit_conf, "group.label")
 
 # Moderator 4: Number of close friends
+
 fit_conf <- sem(sem_model, data = df, ordered = TRUE, estimator = "WLSMV",
                 group = "n_friends")
 
@@ -137,3 +139,4 @@ subset(standardizedsolution(fit_covar), op == "~")
 
 table(df$n_friends)
 lavInspect(fit_conf, "group.label")
+
