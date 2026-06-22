@@ -4,9 +4,9 @@
 Este estudo investiga a associação entre experiências de bullying e sofrimento psicológico em adolescentes brasileiros, utilizando dados da PeNSE 2024 (Pesquisa Nacional de Saúde do Escolar). Além disso, avalia o papel moderador de fatores de apoio social nos contextos familiar, escolar e interpessoal, investigando em que medida esses recursos podem atenuar os impactos do bullying sobre a saúde mental dos adolescentes.
 
 ## Conceptual Model
-**X (Predictor):** Experiências de bullying (verbal, relacional e físico)
-**Y (Outcome):** Sofrimento psicológico (preocupação frequente, tristeza, sensação de desamparo, irritabilidade e sentimento de inutilidade)
-**Moderators:** Apoio escolar · Compreensão parental · Gentileza dos pares · Número de amigos próximos
+- **X (Predictor):** Experiências de bullying (verbal, relacional e físico)
+- **Y (Outcome):** Sofrimento psicológico (preocupação frequente, tristeza, sensação de desamparo, irritabilidade e sentimento de inutilidade)
+- **Moderators:** Apoio escolar · Compreensão parental · Gentileza dos pares · Número de amigos próximos
 
 ## Repository Structure
 | File | Description |
