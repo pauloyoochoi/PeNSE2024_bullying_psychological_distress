@@ -1,0 +1,227 @@
+---
+title: "PeNSE 2024 · Bullying and Psychological Distress: Moderation Analysis"
+output:
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    code_folding: hide
+    df_print: paged
+date: "2026-06-22"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+```
+
+```{r packages}
+library(readxl)
+library(lavaan)
+library(semTools)
+library(tidyverse)
+library(psych)
+library(knitr)
+library(kableExtra)
+```
+
+```{r data}
+df <- read_xlsx("pense_2024_clean.xlsx", na = c("null", ""))
+describe(df)
+colSums(is.na(df))
+colMeans(is.na(df)) * 100
+```
+
+---
+
+## 1. SEM Base Model
+
+```{r sem-model}
+sem_model <- "
+  bullying               =~ bully_verbal + bully_relational + bully_physical
+  psychological_distress =~ mh_worry + mh_sadness + mh_uncared + mh_irritable + mh_worthless
+  psychological_distress ~ bullying
+"
+fit_sem <- sem(sem_model, data = df, ordered = TRUE, estimator = "WLSMV")
+summary(fit_sem, fit.measures = TRUE, standardized = TRUE, rsquare = TRUE)
+```
+
+### Interpretation
+
+The base SEM showed adequate fit (CFI = 0.952, RMSEA = 0.080, SRMR = 0.041). Bullying was a significant predictor of psychological distress (β = 0.525, p < .001), explaining 27.6% of its variance.
+
+---
+
+## 2. Moderator 1: School Support
+
+```{r mod1}
+fit_conf   <- sem(sem_model, data = df, ordered = TRUE, estimator = "WLSMV", group = "support")
+fit_metric <- update(fit_conf, group.equal = "loadings")
+fit_scalar <- update(fit_conf, group.equal = c("loadings", "thresholds"))
+fit_var    <- update(fit_conf, group.equal = c("loadings", "thresholds", "lv.variances"))
+fit_covar  <- update(fit_conf, group.equal = c("loadings", "thresholds", "lv.variances", "lv.covariances"))
+teste      <- compareFit(fit_conf, fit_metric, fit_scalar, fit_var, fit_covar)
+summary(teste)
+
+fit_regression   <- update(fit_conf, group.equal = c("loadings", "thresholds", "lv.variances", "lv.covariances", "regressions"))
+teste_moderation <- compareFit(fit_covar, fit_regression)
+summary(teste_moderation)
+
+subset(standardizedsolution(fit_covar), op == "~")
+
+table(df$support)
+lavInspect(fit_conf, "group.label")
+```
+
+### Measurement Invariance
+
+Metric invariance was supported (ΔCFI = 0, ΔRMSEA = −0.006), as was scalar invariance (ΔCFI = 0, ΔRMSEA = +0.008), allowing meaningful group comparisons. Latent variable variances differed across groups (ΔCFI = 0, ΔRMSEA = −0.002).
+
+### Moderation
+
+School support significantly moderated the bullying–distress relationship (Δχ²(1) = 22.9, p < .001). Group order was confirmed via `lavInspect(fit_conf, "group.label")` = `"1" "0"`:
+
+| Group | β |
+|---|---|
+| With support (1) | 0.520 |
+| Without support (0) | 0.551 |
+
+Although statistically significant given the large sample, the effect size difference (Δβ = 0.031) suggests that school psychological support had negligible protective value in this sample.
+
+---
+
+## 3. Moderator 2: Parental Understanding
+
+```{r mod2}
+fit_conf   <- sem(sem_model, data = df, ordered = TRUE, estimator = "WLSMV", group = "parent_understanding")
+fit_metric <- update(fit_conf, group.equal = "loadings")
+fit_scalar <- update(fit_conf, group.equal = c("loadings", "thresholds"))
+fit_var    <- update(fit_conf, group.equal = c("loadings", "thresholds", "lv.variances"))
+fit_covar  <- update(fit_conf, group.equal = c("loadings", "thresholds", "lv.variances", "lv.covariances"))
+teste      <- compareFit(fit_conf, fit_metric, fit_scalar, fit_var, fit_covar)
+summary(teste)
+
+fit_regression   <- update(fit_conf, group.equal = c("loadings", "thresholds", "lv.variances", "lv.covariances", "regressions"))
+teste_moderation <- compareFit(fit_covar, fit_regression)
+summary(teste_moderation)
+
+subset(standardizedsolution(fit_covar), op == "~")
+
+table(df$parent_understanding)
+lavInspect(fit_conf, "group.label")
+```
+
+### Measurement Invariance
+
+Metric invariance was supported (ΔCFI = −0.002, ΔRMSEA = −0.006), as was scalar invariance (ΔCFI = 0, ΔRMSEA = +0.010), allowing meaningful group comparisons. Latent variable variances were not invariant across groups (ΔCFI = −0.014), indicating differences in construct dispersion.
+
+### Moderation
+
+Parental understanding significantly moderated the bullying–distress relationship (Δχ²(2) = 3077.9, p < .001). Group order was confirmed via `lavInspect(fit_conf, "group.label")` = `"2" "1" "0"`:
+
+| Group | β |
+|---|---|
+| Most times/Always (2) | 0.521 |
+| Rarely/Sometimes (1) | 0.443 |
+| Never (0) | **0.804** |
+
+Adolescents whose parents never understand their problems showed a substantially stronger bullying–distress effect (β = 0.804), nearly double that of the partial understanding group (β = 0.443). This suggests parental understanding acts as a meaningful protective factor, even when only partial.
+
+---
+
+## 4. Moderator 3: Peer Kindness
+
+```{r mod3}
+fit_conf   <- sem(sem_model, data = df, ordered = TRUE, estimator = "WLSMV", group = "peer_kindness")
+fit_metric <- update(fit_conf, group.equal = "loadings")
+fit_scalar <- update(fit_conf, group.equal = c("loadings", "thresholds"))
+fit_var    <- update(fit_conf, group.equal = c("loadings", "thresholds", "lv.variances"))
+fit_covar  <- update(fit_conf, group.equal = c("loadings", "thresholds", "lv.variances", "lv.covariances"))
+teste      <- compareFit(fit_conf, fit_metric, fit_scalar, fit_var, fit_covar)
+summary(teste)
+
+fit_regression   <- update(fit_conf, group.equal = c("loadings", "thresholds", "lv.variances", "lv.covariances", "regressions"))
+teste_moderation <- compareFit(fit_covar, fit_regression)
+summary(teste_moderation)
+
+subset(standardizedsolution(fit_covar), op == "~")
+
+table(df$peer_kindness)
+lavInspect(fit_conf, "group.label")
+```
+
+### Measurement Invariance
+
+Metric invariance was supported (ΔCFI = −0.003, ΔRMSEA = −0.004), as was scalar invariance (ΔCFI = +0.002, ΔRMSEA = +0.008), allowing meaningful group comparisons. Latent variable variances were not invariant across groups (ΔCFI = −0.007).
+
+### Moderation
+
+Peer kindness significantly moderated the bullying–distress relationship (Δχ²(2) = 2551.9, p < .001). Group order was confirmed via `lavInspect(fit_conf, "group.label")` = `"2" "1" "0"`:
+
+| Group | β |
+|---|---|
+| Most times/Always (2) | 0.478 |
+| Rarely/Sometimes (1) | 0.506 |
+| Never (0) | **0.870** |
+
+A clear dose-response pattern emerged: the less kindness experienced from peers, the stronger the impact of bullying on psychological distress. Adolescents who never experienced peer kindness showed the highest effect (β = 0.870), nearly twice that of those with consistent peer support (β = 0.478).
+
+---
+
+## 5. Moderator 4: Number of Close Friends
+
+```{r mod4}
+fit_conf   <- sem(sem_model, data = df, ordered = TRUE, estimator = "WLSMV", group = "n_friends")
+fit_metric <- update(fit_conf, group.equal = "loadings")
+fit_scalar <- update(fit_conf, group.equal = c("loadings", "thresholds"))
+fit_var    <- update(fit_conf, group.equal = c("loadings", "thresholds", "lv.variances"))
+fit_covar  <- update(fit_conf, group.equal = c("loadings", "thresholds", "lv.variances", "lv.covariances"))
+teste      <- compareFit(fit_conf, fit_metric, fit_scalar, fit_var, fit_covar)
+summary(teste)
+
+fit_regression   <- update(fit_conf, group.equal = c("loadings", "thresholds", "lv.variances", "lv.covariances", "regressions"))
+teste_moderation <- compareFit(fit_covar, fit_regression)
+summary(teste_moderation)
+
+subset(standardizedsolution(fit_covar), op == "~")
+
+table(df$n_friends)
+lavInspect(fit_conf, "group.label")
+```
+
+### Measurement Invariance
+
+Metric invariance was supported (ΔCFI = −0.001, ΔRMSEA = −0.005). Scalar invariance showed a borderline pattern (ΔCFI = +0.001, ΔRMSEA = +0.007). Latent variable variances differed across groups (ΔCFI = −0.004).
+
+### Moderation
+
+Number of close friends significantly moderated the bullying–distress relationship (Δχ²(1) = 689.5, p < .001). Group order was confirmed via `lavInspect(fit_conf, "group.label")` = `"1" "0"`:
+
+| Group | β |
+|---|---|
+| Has friends (1+) | 0.520 |
+| No friends | **0.822** |
+
+Adolescents with no close friends showed a substantially stronger bullying–distress effect (β = 0.822 vs β = 0.520). Having even one close friend appears to confer meaningful protection against the psychological impact of bullying.
+
+---
+
+## 6. Summary
+
+```{r summary-table}
+summary_df <- data.frame(
+  Moderator       = c("School Support", "Parental Understanding", "Peer Kindness", "N Friends"),
+  `Delta Chi2`    = c(22.9, 3077.9, 2551.9, 689.5),
+  df              = c(1, 2, 2, 1),
+  p               = c("<.001", "<.001", "<.001", "<.001"),
+  `Beta protected`   = c(0.520, 0.443, 0.478, 0.520),
+  `Beta unprotected` = c(0.551, 0.804, 0.870, 0.822),
+  `Delta Beta`    = c(0.031, 0.361, 0.392, 0.302),
+  Protective      = c("❌ Negligible", "✅ Strong", "✅ Strong", "✅ Strong")
+)
+
+kable(summary_df, digits = 3, caption = "Moderation Effects Summary") %>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed"), full_width = FALSE)
+```
+
+Three of four moderators demonstrated meaningful protective effects against the bullying–psychological distress relationship. Peer kindness showed the largest differential (Δβ = 0.392), followed by parental understanding (Δβ = 0.361) and number of close friends (Δβ = 0.302). School psychological support, while statistically significant, showed negligible practical effect (Δβ = 0.031), possibly reflecting limitations in the reach or quality of school-based services captured in this dataset.
