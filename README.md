@@ -73,7 +73,7 @@ The base model confirmed a significant positive relationship between bullying an
 ## Results Summary
 | Moderator | Δχ² | df | p | β protected | β unprotected | Δβ | Protection |
 |-----------|-----|----|----|------------|---------------|-----|------------|
-| School support | 22.9 | 1 | <.001 | 0.520 | 0.551 | 0.031 | Negligible |
+| School support | 22.9 | 1 | <.001 | 0.520 | 0.551 | 0.031 | Minimal |
 | Parental understanding | 3,077.9 | 2 | <.001 | 0.443 | 0.804 | 0.361 | Strong |
 | Peer kindness | 2,551.9 | 2 | <.001 | 0.478 | 0.870 | 0.392 | Strong |
 | N close friends | 689.5 | 1 | <.001 | 0.520 | 0.822 | 0.302 | Strong |
