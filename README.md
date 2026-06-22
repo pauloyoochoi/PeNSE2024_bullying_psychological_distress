@@ -35,7 +35,7 @@ O modelo base confirmou uma relação positiva significativa entre bullying e so
 - **Coefficients:**
   - With support: β = 0.520
   - Without support: β = 0.551
-**Interpretation:** Embora estatisticamente significativa, a diferença entre os grupos é mínima (Δβ = 0,031), sugerindo que o apoio psicológico escolar não atenua de forma expressiva a relação entre vitimização por bullying e sofrimento psicológico. A equivalência dos coeficientes indica que adolescentes com e sem acesso a esse suporte apresentam níveis similares de sofrimento associado ao bullying.
+- **Interpretation:** Embora estatisticamente significativa, a diferença entre os grupos é mínima (Δβ = 0,031), sugerindo que o apoio psicológico escolar não atenua de forma expressiva a relação entre vitimização por bullying e sofrimento psicológico. A equivalência dos coeficientes indica que adolescentes com e sem acesso a esse suporte apresentam níveis similares de sofrimento associado ao bullying.
 
 ---
 
