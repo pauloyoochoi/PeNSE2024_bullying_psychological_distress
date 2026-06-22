@@ -24,6 +24,10 @@ Este estudo investiga a associação entre experiências de bullying e sofriment
 ## Data Source
 PeNSE 2024 — Pesquisa Nacional de Saúde do Escolar Instituto Brasileiro de Geografia e Estatística (IBGE) https://www.ibge.gov.br/estatisticas/sociais/populacao/9134-pesquisa-nacional-de-saude-do-escolar.html
 
+## Sample
+- **Total sample:** 153 870 adolescentes brasileiros
+- **Complete cases used in SEM:** ~146 585
+
 ## Base SEM Model
 O modelo base confirmou uma relação positiva significativa entre bullying e sofrimento psicológico (β = 0,525, p < ,001), com bom ajuste global (CFI = 0,952; RMSEA = 0,080; SRMR = 0,041). O bullying explicou 27,6% da variância no sofrimento psicológico.
 
