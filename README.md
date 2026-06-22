@@ -14,6 +14,7 @@ This project investigates the relationship between **bullying victimization** an
 | `00 · Data Preparation & Exploratory Analysis.ipynb` | Data cleaning, recoding and exploratory analysis (Databricks/PySpark) |
 | `01 · Moderation Analysis (script).R` | Moderation analysis script |
 | `02 · Moderation Analysis (report).Rmd` | RMarkdown report with full results |
+[📊 report.html](https://pauloyoochoi.github.io/PeNSE2024_bullying_psychological_distress/report.html) | Interactive HTML report (rendered) |
 
 ## Methods
 - **Software:** Python (Databricks/PySpark) + R (lavaan, semTools)
